@@ -30,4 +30,6 @@ const AboutUs = () => {
   );
 };
 
+
+// export the about us component
 export default AboutUs;
