@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+
+.font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+
+
+@keyframes smooth-rotate-pulse {
+  0% {
+    transform: rotate(0deg) scale(1);
+    animation-timing-function: cubic-bezier(0.1, 0.055, 0.675, 0.19);
+  }
+
+  50% {
+    transform: rotate(180deg) scale(0.05);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+.animate-smooth-rotate-pulse {
+  animation: smooth-rotate-pulse 4s infinite;
+  transform-origin: center;
+  will-change: transform;
+  /* Optimizes for smooth animation */
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #3076F8;
+  /* Change button color */
+  margin: 0 0px;
+  /* Add gap between buttons */
+  transform: scale(1.2);
+  /* Slightly enlarge buttons */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: #FB62F6;
+  /* Change color on hover */
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(79, 70, 229, 0.3);
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
