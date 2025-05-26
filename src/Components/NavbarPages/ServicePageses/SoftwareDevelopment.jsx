@@ -13,10 +13,9 @@ const SoftwareDevelopment = () => {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-gray-500 mb-6 sm:mb-8 leading-relaxed">
-            Regular updates, security patches, and performance monitoring for your website are crucial to keeping your digital presence stable 
-            and secure. Our end-to-end software development services include scalable solutions tailored to your business goals — ensuring smooth 
-            operations, seamless integrations, and future-ready digital systems.
+            Stay secure and scalable with our custom software development services. From regular updates to seamless integrations, we build reliable solutions tailored to your business needs.
           </p>
+
 
           <h2 className="text-2xl sm:text-3xl font-medium text-gray-600 mb-4 sm:mb-6">
             Our Software Development Services
@@ -38,9 +37,9 @@ const SoftwareDevelopment = () => {
 
         {/* Image - Now at bottom for mobile/tablet */}
         <div className="w-full flex justify-center mt-8">
-          <img 
-            src={img1} 
-            alt="Software Development" 
+          <img
+            src={img1}
+            alt="Software Development"
             className="w-full max-w-[300px] sm:max-w-[400px] h-auto object-contain"
           />
         </div>
@@ -78,9 +77,9 @@ const SoftwareDevelopment = () => {
 
         {/* Right Section - Image */}
         <div className="w-full lg:w-1/2 flex justify-center">
-          <img 
-            src={img1} 
-            alt="Software Development" 
+          <img
+            src={img1}
+            alt="Software Development"
             className="max-w-[30vw] h-auto object-contain"
           />
         </div>

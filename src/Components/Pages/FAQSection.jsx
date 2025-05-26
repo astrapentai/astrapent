@@ -10,16 +10,16 @@ const FAQSection = () => {
       answer: "We offer website development, e-commerce solutions, digital marketing, graphic design, and much more to help your business grow online."
     },
     {
-      question: "How can I get started with D3 Logics?",
-      answer: "You can get started by contacting us through our website or by calling our sales team. We'll schedule a consultation to understand your requirements."
+      question: "How do you handle data security and user privacy?",
+      answer: " We follow best practices like HTTPS, encrypted databases, secure authentication, and GDPR-compliance to ensure complete data protection."
     },
     {
       question: "How much will it cost to develop my website?",
       answer: "The cost varies depending on your requirements. We offer custom quotes after understanding your project scope during our initial consultation."
     },
     {
-      question: "What makes D3 Logics different from other agencies?",
-      answer: "Our unique combination of technical expertise, creative design, and data-driven marketing strategies sets us apart from competitors."
+      question: "How do we start?",
+      answer: "Contact us for a free consultation to discuss your vision and goals!"
     },
     {
       question: "How long does it take to complete a website project?",

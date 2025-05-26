@@ -5,75 +5,75 @@ import { SiNextdotjs, SiTailwindcss, SiMongodb, SiExpress, SiTypescript, SiGraph
 
 const Technology = () => {
   const technologies = [
-    { 
-      name: "React", 
+    {
+      name: "React",
       icon: <FaReact className="text-4xl text-blue-500" />,
-      color: "text-blue-500", 
-      bg: "bg-blue-500/10", 
-      shadow: "hover:shadow-blue-500/30" 
+      color: "text-blue-500",
+      bg: "bg-blue-500/10",
+      shadow: "hover:shadow-blue-500/30"
     },
-    { 
-      name: "Next.js", 
+    {
+      name: "Next.js",
       icon: <SiNextdotjs className="text-4xl text-gray-800" />,
-      color: "text-gray-800", 
-      bg: "bg-gray-800/10", 
-      shadow: "hover:shadow-gray-800/30" 
+      color: "text-gray-800",
+      bg: "bg-gray-800/10",
+      shadow: "hover:shadow-gray-800/30"
     },
-    { 
-      name: "Node.js", 
+    {
+      name: "Node.js",
       icon: <FaNodeJs className="text-4xl text-green-600" />,
-      color: "text-green-600", 
-      bg: "bg-green-600/10", 
-      shadow: "hover:shadow-green-600/30" 
+      color: "text-green-600",
+      bg: "bg-green-600/10",
+      shadow: "hover:shadow-green-600/30"
     },
-    { 
-      name: "Tailwind CSS", 
+    {
+      name: "Tailwind CSS",
       icon: <SiTailwindcss className="text-4xl text-cyan-500" />,
-      color: "text-cyan-500", 
-      bg: "bg-cyan-500/10", 
-      shadow: "hover:shadow-cyan-500/30" 
+      color: "text-cyan-500",
+      bg: "bg-cyan-500/10",
+      shadow: "hover:shadow-cyan-500/30"
     },
-    { 
-      name: "MongoDB", 
+    {
+      name: "MongoDB",
       icon: <SiMongodb className="text-4xl text-green-700" />,
-      color: "text-green-700", 
-      bg: "bg-green-700/10", 
-      shadow: "hover:shadow-green-700/30" 
+      color: "text-green-700",
+      bg: "bg-green-700/10",
+      shadow: "hover:shadow-green-700/30"
     },
-    { 
-      name: "Express", 
+    {
+      name: "Express",
       icon: <SiExpress className="text-4xl text-gray-600" />,
-      color: "text-gray-600", 
-      bg: "bg-gray-600/10", 
-      shadow: "hover:shadow-gray-600/30" 
+      color: "text-gray-600",
+      bg: "bg-gray-600/10",
+      shadow: "hover:shadow-gray-600/30"
     },
-    { 
-      name: "TypeScript", 
+    {
+      name: "TypeScript",
       icon: <SiTypescript className="text-4xl text-blue-600" />,
-      color: "text-blue-600", 
-      bg: "bg-blue-600/10", 
-      shadow: "hover:shadow-blue-600/30" 
+      color: "text-blue-600",
+      bg: "bg-blue-600/10",
+      shadow: "hover:shadow-blue-600/30"
     },
-    { 
-      name: "GraphQL", 
+    {
+      name: "GraphQL",
       icon: <SiGraphql className="text-4xl text-pink-600" />,
-      color: "text-pink-600", 
-      bg: "bg-pink-600/10", 
-      shadow: "hover:shadow-pink-600/30" 
+      color: "text-pink-600",
+      bg: "bg-pink-600/10",
+      shadow: "hover:shadow-pink-600/30"
     },
-    { 
-      name: "Redux", 
+    {
+      name: "Redux",
       icon: <SiRedux className="text-4xl text-purple-500" />,
-      color: "text-purple-500", 
-      bg: "bg-purple-500/10", 
-      shadow: "hover:shadow-purple-500/30" 
+      color: "text-purple-500",
+      bg: "bg-purple-500/10",
+      shadow: "hover:shadow-purple-500/30"
     },
-    { 
-      name: "Firebase", 
+    {
+      name: "Firebase",
       icon: <SiFirebase className="text-4xl text-orange-500" />,
-      color: "text-orange-500", 
-      bg: "bg-orange-500/10", 
-      shadow: "hover:shadow-orange-500/30" 
+      color: "text-orange-500",
+      bg: "bg-orange-500/10",
+      shadow: "hover:shadow-orange-500/30"
     }
   ];
 
@@ -108,7 +108,7 @@ const Technology = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -119,12 +119,11 @@ const Technology = () => {
             Tech Stack
           </span>
           <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-            <span className="block">Our Cutting-Edge</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Technologies</span>
+            <span className="block">Cutting-Edge Technologies</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">We Master</span>
           </h2>
           <p className="mt-6 max-w-3xl mx-auto text-lg text-gray-600">
-            We leverage modern, battle-tested technologies to build fast, scalable and secure web applications that stand out.
-          </p>
+            At AstraPent, we leverage the latest technologies to build innovative, scalable solutions that drive your success          </p>
         </motion.div>
 
         {/* Technologies Grid */}

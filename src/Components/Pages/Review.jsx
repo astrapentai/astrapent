@@ -191,8 +191,7 @@ const Review = () => {
             India's Premier <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Web Development</span> Company
           </h3>
           <p className="text-gray-700 max-w-3xl mx-auto text-lg">
-            We craft digital experiences with cutting-edge tools and innovations, ensuring your website stands out in today's competitive landscape.
-          </p>
+            Let AstraPent bring your ideas to life with custom websites, apps, and e-commerce solutions. Start your journey to digital success today! Contact us now for a free consultation and let’s build something extraordinary together!</p>
           <button
             onClick={scrollToContact} // Smooth scroll to ContactUS section
             className="mt-6 px-8 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:-translate-y-1"

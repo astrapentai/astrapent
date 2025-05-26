@@ -24,12 +24,12 @@ const AboutUsSection = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-20 bg-gray-50 mb-5">
+    <div className="max-w-7xl mx-auto px-2 sm:px-4 py-8 sm:py-14 md:py-20 bg-gray-50 mb-5">
       {/* Top Section - Image Left, Text Right */}
-      <div className="flex flex-col lg:flex-row gap-12 items-center mb-20">
+      <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-center mb-10 md:mb-16">
         {/* Image - Left Side */}
-        <div className="lg:w-1/2">
-          <div className="relative rounded-xl overflow-hidden shadow-lg h-96 w-full">
+        <div className="w-full lg:w-1/2">
+          <div className="relative rounded-xl overflow-hidden shadow-lg aspect-video w-full">
             <img
               src="https://images.unsplash.com/photo-1579389083078-4e7018379f7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
               alt="Business success"
@@ -40,27 +40,27 @@ const AboutUsSection = () => {
         </div>
         
         {/* Text Content - Right Side */}
-        <div className="lg:w-1/2">
-          <h1 className="text-4xl font-bold text-gray-800 mb-6">
+        <div className="w-full lg:w-1/2 mt-6 lg:mt-0">
+          <h1 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 sm:mb-5 lg:mb-6 leading-tight sm:leading-snug">
             We're all about creating your success
           </h1>
-          <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-3 sm:mb-5 leading-relaxed">
             The majority of businesses have a set of guiding principles or core values that specify how they plan to do business. We are distinct in the core ideals we hold dear.
           </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
             Fairness, honesty, and respect for individuals have been the cornerstones of our operations since inception. Or, to quote our founder, "The Essence of Life is Relationships." As a business, we consider everyone to be inherently valuable.
           </p>
         </div>
       </div>
 
       {/* Interactive Tabs */}
-      <div className="flex justify-center mb-16">
-        <div className="flex bg-white p-1 rounded-full shadow-lg border border-gray-200">
+      <div className="flex justify-center mb-8 md:mb-12 overflow-x-auto scrollbar-hide">
+        <div className="flex bg-white p-1 rounded-full shadow-lg border border-gray-200 min-w-fit">
           {['values', 'mission', 'story'].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`relative px-8 py-3 text-lg font-bold rounded-full transition-colors duration-300 ${
+              className={`relative px-4 sm:px-6 md:px-8 py-2 sm:py-3 text-sm sm:text-base md:text-lg font-bold rounded-full transition-colors duration-300 whitespace-nowrap ${
                 activeTab === tab
                   ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600'
                   : 'text-gray-600 hover:text-gray-900'
@@ -76,49 +76,48 @@ const AboutUsSection = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
           transition={{ duration: 0.3 }}
-          className="bg-white rounded-3xl shadow-xl overflow-hidden"
+          className="bg-white rounded-2xl sm:rounded-3xl shadow-xl overflow-hidden"
         >
-          <div className="grid lg:grid-cols-2">
+          <div className="flex flex-col lg:flex-row">
             {/* For VALUES tab - Image on left, text on right */}
             {activeTab === 'values' ? (
               <>
-                
-                <div className="p-12 flex flex-col justify-center">
-                  <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                {/* On mobile: image above text, on desktop: image left, text right */}
+                <div className="order-2 lg:order-1 p-4 sm:p-8 md:p-10 flex flex-col justify-center">
+                  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-4">
                     {tabContent.values.title}
                   </h2>
-                  <h3 className="text-xl font-semibold text-blue-600 mb-6">
+                  <h3 className="text-xs sm:text-base md:text-xl font-semibold text-blue-600 mb-3 sm:mb-6">
                     {tabContent.values.subtitle}
                   </h3>
-                  <p className="text-lg text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
                     {tabContent.values.text}
                   </p>
                 </div>
-                <div className="relative h-96 lg:h-auto">
+                <div className="order-1 lg:order-2 relative aspect-video w-full">
                   <img
                     src={tabContent.values.image}
                     alt={tabContent.values.title}
                     className="w-full h-full object-cover"
                   />
-                  
                 </div>
               </>
             ) : (
               /* For other tabs - Keep original layout (text left, image right) */
               <>
-                <div className="p-12 flex flex-col justify-center">
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                <div className="p-4 sm:p-8 md:p-10 flex flex-col justify-center">
+                  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-gray-900 mb-2 sm:mb-6">
                     {tabContent[activeTab].title}
                   </h2>
-                  <p className="text-lg text-gray-600 leading-relaxed">
+                  <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
                     {tabContent[activeTab].text}
                   </p>
                 </div>
-                <div className="relative h-96 lg:h-auto">
+                <div className="relative aspect-video w-full">
                   <img
                     src={tabContent[activeTab].image}
                     alt={tabContent[activeTab].title}

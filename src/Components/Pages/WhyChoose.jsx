@@ -155,7 +155,7 @@ const WhyChoose = () => {
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Experiences That Matter</span>
               </h2>
               <p className="mt-6 text-lg text-gray-600 max-w-lg">
-                Discover why forward-thinking businesses trust us to bring their digital vision to life.
+                At AstraPent, we create solutions that drive real impact:
               </p>
             </motion.div>
 

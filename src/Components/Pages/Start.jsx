@@ -27,30 +27,6 @@ const Start = () => {
       tags: ["React Native", "Firebase", "Google Maps API"],
       image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
       category: "Web App"
-    },
-    {
-      id: 4,
-      title: "Healthcare Portal",
-      description: "Secure patient portal with appointment scheduling and telemedicine features",
-      tags: ["Angular", "Python", "PostgreSQL"],
-      image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      category: "Web App"
-    },
-    {
-      id: 5,
-      title: "Education Platform",
-      description: "Learning management system with course builder and student dashboard",
-      tags: ["Vue.js", "Laravel", "MySQL"],
-      image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      category: "Web App"
-    },
-    {
-      id: 6,
-      title: "Travel Blog",
-      description: "Beautiful travel blog with interactive maps and photo galleries",
-      tags: ["Gatsby", "GraphQL", "Cloudinary"],
-      image: "https://images.unsplash.com/photo-1508672019048-805c876b67e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
-      category: "Blog"
     }
   ];
 
@@ -58,13 +34,13 @@ const Start = () => {
     <div className="relative py-20 overflow-hidden bg-gradient-to-b from-white to-blue-50/50">
       {/* Floating background elements */}
       <div className="absolute inset-0 overflow-hidden opacity-20">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full bg-blue-400/20"
             style={{
-              width: Math.random() * 300 + 50,
-              height: Math.random() * 300 + 50,
+              width: Math.random() * 200 + 50,
+              height: Math.random() * 200 + 50,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
             }}
@@ -105,7 +81,7 @@ const Start = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <motion.div
               key={project.id}
@@ -145,7 +121,6 @@ const Start = () => {
                     </span>
                   ))}
                 </div>
-                
               </div>
             </motion.div>
           ))}

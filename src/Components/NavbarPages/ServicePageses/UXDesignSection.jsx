@@ -12,12 +12,13 @@ const UXDesignSection = () => {
           </h1>
 
           <p className="text-base sm:text-lg md:text-xl text-gray-500 mb-6 sm:mb-8 leading-relaxed">
-            Beautiful interfaces that enhance user experience and increase <br className="hidden sm:block" />
-            conversion rates. At Acoder, our UI/UX design team focuses<br className="hidden sm:block" /> on crafting 
-            visually appealing, user-centric designs that align <br className="hidden sm:block" /> with your brand and business 
-            goals. We believe in seamless interactions, intuitive navigation, and elegant 
+            Design that speaks and functions — we craft intuitive, user-first experiences that drive engagement and build trust.<br className="hidden sm:block" />
+            Beautiful interfaces that enhance user experience and increase conversion rates. At Acoder, our UI/UX design team focuses<br className="hidden sm:block" /> on crafting
+            visually appealing, user-centric designs that align <br className="hidden sm:block" /> with your brand and business
+            goals. We believe in seamless interactions, intuitive navigation, and elegant
             design systems that elevate your digital presence.
           </p>
+
 
           <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4 sm:mb-6">
             Our UI/UX Design Services
@@ -41,9 +42,9 @@ const UXDesignSection = () => {
 
         {/* Right Section - Image */}
         <div className="w-full lg:w-1/2 flex justify-center mt-8 lg:mt-0">
-          <img 
-            src={img1} 
-            alt="UI/UX Design" 
+          <img
+            src={img1}
+            alt="UI/UX Design"
             className="w-full max-w-[400px] sm:max-w-[500px] lg:max-w-[30vw] h-auto lg:h-[30vw] object-contain"
           />
         </div>

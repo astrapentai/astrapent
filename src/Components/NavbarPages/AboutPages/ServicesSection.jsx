@@ -1,66 +1,186 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
 
-const ServicesSection = () => {
-    return (
-        <div className="bg-white py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-8 min-h-[70vh] flex items-center">
-            <div className="max-w-6xl mx-auto w-full">
-                <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 mb-8 lg:mb-12 mt-0 lg:mt-[5vw]">
-                    {/* Left Side - Three Boxes (Stacked on mobile, Column on desktop) */}
-                    <div className="lg:w-1/2 flex flex-col gap-4 sm:gap-6 items-center lg:items-end">
-                        {/* Cloud Box */}
-                        <div className="bg-white shadow-xl sm:shadow-2xl p-4 sm:p-6 w-full sm:w-4/5 lg:w-[21vw] min-h-[120px] sm:min-h-[15vh]">
-                            <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-2 sm:ml-4">Cloud</h3>
-                            <div className='flex items-center gap-3 sm:gap-5'>
-                                <div className='h-8 w-8 sm:h-10 sm:w-10 bg-blue-700 rounded-full'></div>
-                                <p className="text-black font-medium text-lg sm:text-xl lg:text-2xl">
-                                    Cloud solutions & <br className="hidden sm:block" /> Management
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Software Box */}
-                        <div className="bg-gray-50 shadow-xl sm:shadow-2xl p-4 sm:p-6 w-full sm:w-4/5 lg:w-[27vw] min-h-[120px] sm:min-h-[12vh]">
-                            <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-2 sm:ml-4">Software</h3>
-                            <div className='flex items-center gap-3 sm:gap-5'>
-                                <div className='h-8 w-8 sm:h-10 sm:w-10 bg-blue-400 rounded-full'></div>
-                                <p className="text-black font-medium text-lg sm:text-xl lg:text-2xl">
-                                    Software solutions & services
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Product Box */}
-                        <div className="bg-gray-50 shadow-xl sm:shadow-2xl p-4 sm:p-6 w-full sm:w-4/5 lg:w-[21vw] min-h-[120px] sm:min-h-[12vh]">
-                            <h3 className="text-base sm:text-lg font-semibold text-gray-700 mb-2 sm:ml-4">Product</h3>
-                            <div className='flex items-center gap-3 sm:gap-5'>
-                                <div className='h-8 w-8 sm:h-10 sm:w-10 bg-gray-700 rounded-full'></div>
-                                <p className="text-black font-medium text-lg sm:text-xl lg:text-2xl">
-                                    Product lifecycle services
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Right Side - Supply Chain Section */}
-                    <div className="lg:w-1/2 mt-6 lg:mt-0">
-                        <div className="w-full lg:ml-12 xl:ml-24 mt-0 lg:mt-[-2vw]">
-                            <h3 className="text-2xl sm:text-3xl font-bold text-black mb-3 sm:mb-4 text-center lg:text-left">
-                                Supply Chain <br className="hidden lg:block" /> Optimization
-                            </h3>
-                            <p className="text-gray-600 mb-4 sm:mb-6 text-center lg:text-left text-base sm:text-lg">
-                                We simplify the procurement process for hardware and software through powerful tools and dedicated consultants.
-                            </p>
-                            <div className="text-center lg:text-left">
-                                <button className="px-4 sm:px-6 py-2 sm:py-3 mt-4 sm:mt-6 lg:mt-10 bg-blue-600 font-bold text-white rounded-full hover:bg-blue-700 transition-colors text-sm sm:text-base">
-                                    READ MORE
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+const AboutValuesSection = () => {
+  return (
+    <section className="bg-gray-50 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto w-full">
+        {/* Section Header */}
+        <div className="text-center mb-12 lg:mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4"
+          >
+            Our Core Values
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-lg text-gray-600 max-w-3xl mx-auto"
+          >
+            We believe in innovation, transparency, and client-focused solutions
+            to drive meaningful digital growth.
+          </motion.p>
         </div>
-    );
+
+        {/* Values Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Innovation",
+              description:
+                "We constantly push boundaries to deliver cutting-edge solutions that solve real problems.",
+              icon: (
+                <svg
+                  className="w-8 h-8 text-blue-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 10V3L4 14h7v7l9-11h-7z"
+                  />
+                </svg>
+              ),
+              color: "bg-blue-100",
+            },
+            {
+              title: "Integrity",
+              description:
+                "Honesty and transparency form the foundation of all our relationships.",
+              icon: (
+                <svg
+                  className="w-8 h-8 text-green-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                  />
+                </svg>
+              ),
+              color: "bg-green-100",
+            },
+            {
+              title: "Excellence",
+              description:
+                "We strive for perfection in every detail, delivering only our best work.",
+              icon: (
+                <svg
+                  className="w-8 h-8 text-yellow-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                  />
+                </svg>
+              ),
+              color: "bg-yellow-100",
+            },
+            {
+              title: "Collaboration",
+              description:
+                "We believe the best solutions come from working together with clients and team members.",
+              icon: (
+                <svg
+                  className="w-8 h-8 text-purple-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                  />
+                </svg>
+              ),
+              color: "bg-purple-100",
+            },
+            {
+              title: "Customer Focus",
+              description:
+                "Your success is our success. We listen first, then build solutions tailored to your needs.",
+              icon: (
+                <svg
+                  className="w-8 h-8 text-red-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                  />
+                </svg>
+              ),
+              color: "bg-red-100",
+            },
+            {
+              title: "Continuous Learning",
+              description:
+                "We stay ahead by constantly updating our skills and embracing new technologies.",
+              icon: (
+                <svg
+                  className="w-8 h-8 text-indigo-600"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                  />
+                </svg>
+              ),
+              color: "bg-indigo-100",
+            },
+          ].map((value, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`p-6 rounded-xl ${value.color} bg-opacity-50 hover:bg-opacity-70 transition-all duration-300`}
+            >
+              <div className="flex items-start mb-4">
+                <div className="p-2 rounded-lg bg-white mr-4 shadow-sm">
+                  {value.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mt-1">
+                  {value.title}
+                </h3>
+              </div>
+              <p className="text-gray-700">{value.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
-export default ServicesSection;
+export default AboutValuesSection;

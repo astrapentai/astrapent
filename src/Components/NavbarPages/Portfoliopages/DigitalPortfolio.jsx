@@ -105,13 +105,13 @@ const DigitalPortfolio = () => {
       category: "Tech Innovation", 
       icon: "⛓️" 
     },
-    { 
-      name: "AR/VR", 
-      image: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80", 
-      description: "Immersive digital experiences", 
-      category: "Design Studio", 
-      icon: "👓" 
-    },
+    // { 
+    //   name: "AR/VR", 
+    //   image: "https://images.unsplash.com/photo-1593508512255-86ab42a8e620?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80", 
+    //   description: "Immersive digital experiences", 
+    //   category: "Design Studio", 
+    //   icon: "👓" 
+    // },
     { 
       name: "UI/UX", 
       image: "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80", 
@@ -131,8 +131,7 @@ const DigitalPortfolio = () => {
     "All",
     "Digital Solutions",
     "Tech Innovation",
-    "Marketing",
-    "Design Studio",
+   
     "Development",
     "Platforms",
     "Services"

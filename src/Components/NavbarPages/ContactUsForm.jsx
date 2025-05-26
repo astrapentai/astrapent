@@ -1,158 +1,192 @@
+import React, { useState, useEffect } from "react";
+import { X, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import contactImage from "../../assets/CLogo.png";
 
-import React, { useState, useEffect } from 'react';
-import { X, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import contactImage from '../../assets/CLogo.png'; // Replace with your image path
-
-const ContactUsForm = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    email: '',
-    companyName: '',
-    phoneNumber: '',
-    message: '',
-  });
-  const [showForm, setShowForm] = useState(true);
-  const navigate = useNavigate(); // Initialize useNavigate
+function ContactForm() {
+  const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
-    document.body.style.overflow = showForm ? 'hidden' : 'auto';
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [showForm]);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    companyName: "",
+    phoneNumber: "",
+    message: "",
+  });
+
+  const [showForm, setShowForm] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     let newValue = value;
 
-    if (name === 'firstName' || name === 'companyName') {
-      newValue = value.replace(/[^a-zA-Z\s]/g, '');
-    } else if (name === 'phoneNumber') {
-      newValue = value.replace(/[^0-9]/g, '');
-    } else if (name === 'email') {
-      newValue = value.replace(/[^a-zA-Z0-9@.]/g, '');
+    if (name === "fullName" || name === "companyName") {
+      newValue = value.replace(/[^a-zA-Z\s]/g, "");
+    } else if (name === "phoneNumber") {
+      newValue = value.replace(/[^0-9]/g, "");
     }
 
-    setFormData({ ...formData, [name]: newValue });
+    setFormData((prev) => ({ ...prev, [name]: newValue }));
   };
 
   const handleClose = () => {
     setShowForm(false);
-    navigate('/'); // Redirect to HomeTop when the form is closed
+    navigate("/");
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccess(false);
+
+    try {
+      const response = await fetch("http://localhost:5000/api/generalContact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitSuccess(true);
+        setFormData({
+          fullName: "",
+          email: "",
+          companyName: "",
+          phoneNumber: "",
+          message: "",
+        });
+        setTimeout(() => setSubmitSuccess(false), 4000);
+      } else {
+        const resData = await response.json();
+        setSubmitError(resData.message || "Something went wrong.");
+      }
+    } catch (error) {
+      setSubmitError("Network error. Please try again!");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (!showForm) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm font-sans p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 sm:p-4">
       <motion.section
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        transition={{ duration: 0.3 }}
-        className="relative z-20 bg-gray-900 rounded-xl shadow-xl max-w-6xl w-full h-[90vh] max-h-[700px] grid grid-cols-1 lg:grid-cols-2 border border-gray-800 overflow-hidden"
+        className={`bg-gray-900 rounded-lg shadow-xl w-200 overflow-hidden border border-gray-700 ${
+          !isMobile ? "max-w-4xl md:grid md:grid-cols-2" : "max-w-md"
+        }`}
+        style={{
+          maxHeight: "90vh",
+        }}
       >
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          onClick={handleClose} // Call handleClose on close button click
-          className="absolute top-3 right-3 text-gray-400 hover:text-white transition z-30"
+        {/* Close Button */}
+        <button
+          onClick={handleClose}
+          className="absolute top-2 right-2 text-gray-400 hover:text-white z-30"
           aria-label="Close"
         >
-          <X className="w-6 h-6" />
-        </motion.button>
+          <X className="w-5 h-5" />
+        </button>
 
-        {/* Left Side - Image */}
-        <div className="hidden lg:block relative bg-gray-800 h-full">
-          <motion.img
-            src={contactImage}
-            alt="Contact Illustration"
-            className="w-full h-full object-cover"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 via-gray-900/30 to-transparent"></div>
-          <motion.div
-            className="absolute bottom-8 left-0 right-0 px-8 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <h3 className="text-2xl font-bold text-white mb-3">Let's Build Something Amazing</h3>
-            <p className="text-gray-300">Our team is ready to help transform your digital presence</p>
-          </motion.div>
-        </div>
+        {/* Image Section - Only visible on md+ screens */}
+        {!isMobile && (
+          <div className="hidden md:flex items-center justify-center bg-gray-800 p-4">
+            <img
+              src={contactImage}
+              alt="Contact Us"
+              className="w-full h-full object-contain max-h-[400px]"
+            />
+          </div>
+        )}
 
-        {/* Right Side - Form Content */}
-        <div className="p-6 md:p-8 space-y-6 overflow-y-auto">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="text-center"
-          >
-            <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400">
+        {/* Form Section */}
+        <div className="p-4 space-y-3 overflow-y-auto">
+          <div className="mb-2">
+            <h2 className="text-lg sm:text-xl font-bold text-cyan-400">
               Contact Us
             </h2>
-            <p className="text-gray-400 mt-3">
-              Get in touch with our experts today
+            <p className="text-gray-400 text-xs sm:text-sm">
+              Our team will get in touch shortly
             </p>
-          </motion.div>
+          </div>
 
-          <form className="space-y-5">
+          {(submitSuccess || submitError) && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`p-2 rounded text-sm ${
+                submitSuccess ? "bg-green-600" : "bg-red-600"
+              } text-white`}
+            >
+              {submitSuccess
+                ? "Thank you! Your message has been sent."
+                : submitError}
+            </motion.div>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-3">
             {[
-              { name: 'firstName', placeholder: 'First Name', type: 'text' },
-              { name: 'email', placeholder: 'Email Address', type: 'email' },
-              { name: 'companyName', placeholder: 'Company Name', type: 'text' },
-              { name: 'phoneNumber', placeholder: 'Phone Number', type: 'tel' },
-            ].map((field, index) => (
-              <motion.div
-                key={field.name}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
+              { label: "Full Name", name: "fullName", type: "text" },
+              { label: "Email", name: "email", type: "email" },
+              { label: "Company Name", name: "companyName", type: "text" },
+              { label: "Phone Number", name: "phoneNumber", type: "tel" },
+            ].map(({ label, name, type }) => (
+              <div key={name}>
                 <input
-                  type={field.type}
-                  name={field.name}
-                  placeholder={field.placeholder}
-                  value={formData[field.name]}
+                  name={name}
+                  type={type}
+                  placeholder={label}
+                  value={formData[name]}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-gray-200 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
+                  required={name === "fullName" || name === "email"}
+                  className="w-full px-3 py-2 text-sm sm:text-base bg-gray-800 border border-gray-700 rounded text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-cyan-500"
                 />
-              </motion.div>
+              </div>
             ))}
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.4 }}
-            >
-              <textarea
-                name="message"
-                placeholder="Your Message (Minimum 30 characters)"
-                value={formData.message}
-                onChange={handleChange}
-                minLength="30"
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded-lg text-gray-200 resize-none h-32 focus:outline-none focus:ring-2 focus:ring-cyan-500 transition"
-              />
-            </motion.div>
+            <textarea
+              name="message"
+              placeholder="Your message (minimum 30 characters)"
+              value={formData.message}
+              onChange={handleChange}
+              minLength={30}
+              required
+              className="w-full px-3 py-2 text-sm sm:text-base bg-gray-800 border border-gray-700 rounded text-white placeholder-gray-500 resize-none focus:outline-none focus:ring-1 focus:ring-cyan-500"
+              rows={4}
+            />
 
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
+            <button
               type="submit"
-              className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 py-3 rounded-lg font-medium flex items-center justify-center gap-2 text-md mt-4"
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-cyan-500 to-purple-500 text-white py-2 rounded flex items-center justify-center text-sm sm:text-base hover:opacity-90 transition-opacity"
             >
-              Submit <ArrowRight size={18} />
-            </motion.button>
+              {isSubmitting ? (
+                "Submitting..."
+              ) : (
+                <>
+                  Submit <ArrowRight size={16} className="ml-1" />
+                </>
+              )}
+            </button>
           </form>
         </div>
       </motion.section>
     </div>
   );
-};
+}
 
-export default ContactUsForm;
+export default ContactForm;

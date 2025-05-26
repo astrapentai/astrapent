@@ -1,171 +1,171 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import img1 from '../../assets/webdev.png';
-import img2 from '../../assets/appdev.png';
-import img3 from '../../assets/webdev.png';
-import { useNavigate, useLocation, Route } from 'react-router-dom';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Typewriter } from 'react-simple-typewriter';
+import { useNavigate } from 'react-router-dom';
+import 'remixicon/fonts/remixicon.css';
 
-const slides = [
-  {
-    title: "Ideas That Go Beyond Borders",
-    description: "We transform your vision into digital reality with cutting-edge solutions that push boundaries.",
-    button1: "Explore More",
-    button1Route: '/Aboupages',
-    button2: "Contact Us",
-    button2Route: '/contactusform',
-    image: img1,
-    bgGradient: "from-indigo-900 to-blue-800",
-    textGradient: "from-amber-400 to-orange-500"
-  },
-  {
-    title: "Innovative Digital Solutions",
-    description: "Creating impactful digital experiences that drive results and exceed expectations.",
-    button1: "View Projects",
-    button1Route: '/digitalPortfolio',
-    button2: "Our Services",
-    button2Route: '/servicePagesess',
-    image: img2,
-    bgGradient: "from-purple-900 to-indigo-800",
-    textGradient: "from-emerald-400 to-teal-500"
-  },
-  {
-    title: "Future-Ready Technology",
-    description: "Building tomorrow's solutions today with forward-thinking approaches and technologies.",
-    button1: "Learn More",
-    button1Route: '/learnMore',
-    button2: "Get Started",
-    button2Route: '/getStarted',
-    image: img3,
-    bgGradient: "from-blue-900 to-cyan-800",
-    textGradient: "from-rose-400 to-pink-500"
-  }
-];
-
-const Home = () => {
-  const [currentSlide, setCurrentSlide] = useState(0);
+const HeroSection = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const [hoveredTech, setHoveredTech] = useState(null);
 
-  useEffect(() => {
-    // Redirect to /homeTop if the page is reloaded on /servicePagesess
-    if (location.pathname === '/servicePagesess') {
-      navigate('/homeTop', { replace: true });
-    }
-  }, [location.pathname, navigate]);
+  const typewriterWords = ['Code the Future', 'Build Smart Solutions', 'Innovate  '];
+  const longestWord = typewriterWords.reduce((a, b) => (a.length > b.length ? a : b));
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  const techCardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: i * 0.2, duration: 0.5, ease: 'easeOut' },
+    }),
+    hover: {
+      scale: 1.1,
+      rotate: 2,
+      boxShadow: '0px 5px 25px rgba(59, 130, 246, 0.3)',
+    },
+  };
 
   return (
-    <div className={`relative min-h-[91vh] flex items-center justify-center bg-gradient-to-br ${slides[currentSlide].bgGradient} overflow-hidden mt-[-2vw]`}>
-      {/* Floating background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-white/10"
-            style={{
-              width: Math.random() * 300 + 100,
-              height: Math.random() * 300 + 100,
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              x: [0, Math.random() * 100 - 50],
-              y: [0, Math.random() * 100 - 50],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: Math.random() * 20 + 10,
-              repeat: Infinity,
-              repeatType: 'reverse',
-              ease: 'linear',
-            }}
+    <div className="relative min-h-screen bg-black text-white overflow-x-hidden">
+      {/* Background Grid & Glow */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#3B82F6" strokeWidth="0.5" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+          <motion.rect
+            width="100%"
+            height="100%"
+            fill="url(#grid)"
+            animate={{ scale: [1, 1.05, 1], rotate: [0, 5, 0] }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
           />
-        ))}
+        </svg>
+        <motion.div
+          className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20"
+          animate={{ opacity: [0.1, 0.3, 0.1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+        />
       </div>
 
-      {/* Main Content */}
-      <div className="relative z-10 container mx-auto px-6 flex items-center justify-between">
-        <AnimatePresence mode='wait'>
+      {/* Content */}
+      <div className="relative z-10 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col lg:flex-row items-center gap-12">
+        {/* Left Side */}
+        <motion.div
+          className="w-full lg:w-1/2 text-center lg:text-left"
+          initial={{ opacity: 0, x: -100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
           <motion.div
-            key={currentSlide}
-            className="w-full lg:w-1/2"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 50 }}
-            transition={{ duration: 0.5 }}
+            className="inline-flex items-center mb-5 bg-blue-900/30 backdrop-blur-md rounded-full px-6 py-2"
+            initial={{ scale: 0.8 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.4 }}
           >
-            <motion.h1
-              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight"
-            >
-              <span className={`text-transparent bg-clip-text bg-gradient-to-r ${slides[currentSlide].textGradient}`}>
-                {slides[currentSlide].title.split(' ')[0]} {slides[currentSlide].title.split(' ')[1]}
-              </span>{' '}
-              <br />
-              <span className="text-white">{slides[currentSlide].title.split(' ').slice(2).join(' ')}</span>
-            </motion.h1>
+            <i className="ri-code-s-slash-line text-xl sm:text-2xl text-blue-400 mr-2"></i>
+            <span className="text-white font-semibold tracking-wide text-sm sm:text-base">
+              Tech That Pops
+            </span>
+          </motion.div>
 
-            <motion.p
-              className="text-lg md:text-xl text-blue-100 mb-8 max-w-lg"
-            >
-              {slides[currentSlide].description}
-            </motion.p>
+         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 leading-tight">
+  <div className="bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent inline-block font-mono text-3xl sm:text-4xl md:text-5xl leading-tight">
+    <Typewriter
+      words={typewriterWords}
+      loop
+      cursor
+      cursorStyle="_"
+      typeSpeed={70}
+      deleteSpeed={50}
+      delaySpeed={1500}
+    />
+  </div>
+  <span className="block text-white text-2xl sm:text-3xl md:text-4xl font-semibold mt-1 ml-1">
+    with AstraPent
+  </span>
+</h1>
 
-            <motion.div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => navigate(slides[currentSlide].button1Route)} // Navigate to button1Route
-                className="px-8 py-3.5 rounded-lg bg-gradient-to-r from-amber-500 to-orange-600 text-white font-medium hover:shadow-lg hover:shadow-amber-500/30 transition-all duration-300 transform hover:-translate-y-1"
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-10 max-w-md mx-auto lg:mx-0">
+            Transform your ideas into reality with custom web and mobile solutions. At AstraPent, we build innovative, scalable software that drives your success. Ready to stand out? Let’s create something extraordinary!.
+          </p>
+
+          <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+            <motion.button
+      onClick={() => navigate('/servicePagesess')}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="px-6 py-3 sm:px-8 sm:py-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold rounded-lg"
+    >
+      Build Your Future
+    </motion.button>
+
+            <motion.button
+              onClick={() => navigate('/digitalportfolio')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 sm:px-8 sm:py-3 border-2 border-cyan-400 text-cyan-400 font-semibold rounded-lg hover:bg-cyan-400/10 flex items-center justify-center gap-2"
+            >
+              <i className="ri-star-line text-lg sm:text-xl" />
+              Explore Our Work
+            </motion.button>
+          </div>
+        </motion.div>
+
+        {/* Right Side */}
+        <motion.div
+          className="w-full lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {[
+            { icon: 'ri-reactjs-line', name: 'React', desc: 'Dynamic Web Apps', color: 'text-cyan-400' },
+            { icon: 'ri-nodejs-line', name: 'Node.js', desc: 'Scalable Backend', color: 'text-green-400' },
+            { icon: 'ri-flutter-line', name: 'Flutter', desc: 'Cross-Platform Apps', color: 'text-blue-400' },
+            { icon: 'ri-robot-line', name: 'AI/ML', desc: 'Smart Solutions', color: 'text-purple-400' },
+          ].map((tech, index) => (
+            <motion.div
+              key={index}
+              custom={index}
+              variants={techCardVariants}
+              initial="hidden"
+              animate="visible"
+              whileHover="hover"
+              onHoverStart={() => setHoveredTech(index)}
+              onHoverEnd={() => setHoveredTech(null)}
+              className="p-5 sm:p-6 bg-white/5 backdrop-blur-md rounded-xl border border-white/10 text-center shadow-lg"
+            >
+              <i className={`${tech.icon} text-3xl sm:text-4xl md:text-5xl ${tech.color} mb-4`} />
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-white">{tech.name}</h3>
+              <motion.p
+                className="text-xs sm:text-sm text-gray-400 mt-2"
+                animate={{
+                  opacity: hoveredTech === index ? 1 : 0,
+                  height: hoveredTech === index ? 'auto' : 0,
+                }}
+                transition={{ duration: 0.3 }}
               >
-                {slides[currentSlide].button1}
-              </button>
-              <button
-                onClick={() => navigate(slides[currentSlide].button2Route)} // Navigate to button2Route
-                className="px-8 py-3.5 rounded-lg bg-white/10 text-white font-medium backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1"
-              >
-                {slides[currentSlide].button2}
-              </button>
+                {tech.desc}
+              </motion.p>
             </motion.div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Image Section */}
-        <AnimatePresence mode='wait'>
-          <motion.div
-            key={`image-${currentSlide}`}
-            className="hidden lg:block lg:w-1/2 relative"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="relative">
-              <img
-                src={slides[currentSlide].image}
-                alt="Innovative Design"
-                className="w-[70%] ml-[10vw] h-auto rounded-2xl shadow-2xl border-8 border-white/10"
-              />
-            </div>
-          </motion.div>
-        </AnimatePresence>
+          ))}
+        </motion.div>
       </div>
 
-      {/* Slide indicators */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-        {slides.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index ? 'bg-white w-6' : 'bg-white/30'}`}
-          />
-        ))}
-      </div>
+      {/* Floating Snippet */}
+      <motion.div
+        className="absolute bottom-10 left-4 font-mono text-cyan-300 text-[10px] sm:text-xs md:text-sm opacity-10"
+        animate={{ y: [0, -10, 0], opacity: [0.1, 0.2, 0.1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+      >
+       
+      </motion.div>
     </div>
   );
 };
 
-export default Home;
+export default HeroSection;
