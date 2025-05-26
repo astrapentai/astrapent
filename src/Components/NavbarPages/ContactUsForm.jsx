@@ -52,7 +52,7 @@ function ContactForm() {
     setSubmitSuccess(false);
 
     try {
-      const response = await fetch("http://localhost:5000/api/generalContact", {
+      const response = await fetch("https://astrapent-backend.vercel.app/api/generalContact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

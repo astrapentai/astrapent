@@ -30,7 +30,7 @@ const ContactUS = () => {
 
     // Using JSON instead of FormData to send clean JSON body (better for custom backend)
     try {
-      const response = await fetch("http://localhost:5000/api/spcContact", {
+      const response = await fetch("https://astrapent-backend.vercel.app/api/spcContact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
