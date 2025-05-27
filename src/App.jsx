@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomeTop />} />
-          <Route path="/homeTop" element={<HomeTop />} />
+          <Route path="/home" element={<HomeTop />} />
           <Route path="/cards" element={<Cards />} />
           <Route path="/start" element={<Start />} />
           <Route path="/whyChoose" element={<WhyChoose />} />

@@ -25,20 +25,20 @@ function Navbar() {
     setActivePath(location.pathname);
   }, [location.pathname]);
 
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        ContactUsFormRef.current &&
-        !ContactUsFormRef.current.contains(event.target)
-      ) {
-        setShowContactUsForm(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  // useEffect(() => {
+  //   function handleClickOutside(event) {
+  //     if (
+  //       ContactUsFormRef.current &&
+  //       !ContactUsFormRef.current.contains(event.target)
+  //     ) {
+      
+  //     }
+  //   }
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
 
   // Helper to handle link click
   const handleNavClick = (path) => {
@@ -54,7 +54,8 @@ function Navbar() {
         {/* Logo */}
         <Link
           to="/homeTop"
-          onClick={() => window.scrollTo(0, 0)}
+          
+          onClick={() => { window.scrollTo(0, 0); setIsMobileMenuOpen(false); }}
           className="w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] lg:w-[140px] lg:h-[140px]"
         >
           <img
@@ -91,18 +92,10 @@ function Navbar() {
           {/* Contact Us with red text and blue underline hover */}
           <button
             onClick={() => setShowContactUsForm(!showContactUsForm)}
-            className={`relative group ml-6 font-semibold text-[20px] cursor-pointer ${
-              showContactUsForm
-                ? "text-red-600"
-                : "text-red-600 hover:text-red-700"
-            }`}
+            className={`relative group ml-6 font-semibold text-[20px] z-40 cursor-pointer`}
           >
             Contact Us
-            <span
-              className={`absolute left-0 bottom-0 h-[2.5px] bg-[#3b82f6] transition-all duration-300 ${
-                showContactUsForm ? "w-full" : "w-0 group-hover:w-full"
-              }`}
-            ></span>
+            
           </button>
         </div>
 
@@ -142,7 +135,8 @@ function Navbar() {
                     ? "text-[#3b82f6] font-semibold border-b-2 border-[#3b82f6]"
                     : "text-gray-800 hover:bg-gray-50"
                 }`}
-                onClick={() => handleNavClick(link.path)}
+                
+                onClick={() => { window.scrollTo(0, 0); setIsMobileMenuOpen(false); handleNavClick(link.path)}}
               >
                 <span className="text-[16px] font-medium">{link.name}</span>
               </Link>
@@ -150,18 +144,17 @@ function Navbar() {
 
             {/* Mobile Contact Us */}
             <button
-              className={`font-semibold text-[18px] border-b-2 border-transparent transition-all duration-300 cursor-pointer mt-2 ${
-                showContactUsForm
-                  ? "text-red-600 border-b-2 border-[#3b82f6]"
-                  : "text-red-600 hover:border-[#3b82f6]"
-              }`}
+              className={`font-semibold text-[18px]  border-transparent transition-all duration-300 cursor-pointer mt-2 `}
               onClick={() => setShowContactUsForm(!showContactUsForm)}
+              
             >
               Contact Us
             </button>
 
             {showContactUsForm && (
-              <div className="mt-2 px-2">
+              <div
+              onClick={(e) => {setShowContactUsForm(false); setIsMobileMenuOpen(false);}}
+              className="mt-2 px-2">
                 <ContactUsForm />
               </div>
             )}

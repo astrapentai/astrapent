@@ -42,7 +42,8 @@ function ContactForm() {
 
   const handleClose = () => {
     setShowForm(false);
-    navigate("/");
+    // Remove or comment out the next line if you don't want to navigate away
+    // navigate("/");
   };
 
   const handleSubmit = async (e) => {
@@ -82,8 +83,12 @@ function ContactForm() {
   if (!showForm) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 sm:p-4">
+    <div
+      onClick={!isMobile ? handleClose : undefined}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-2 sm:p-4"
+    >
       <motion.section
+        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the form
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         className={`bg-gray-900 rounded-lg shadow-xl w-200 overflow-hidden border border-gray-700 ${
