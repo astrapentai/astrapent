@@ -10,12 +10,7 @@ function Footer() {
         <div>
           <h1 className="text-3xl font-bold mb-4">ASTRAPENT</h1>
           <p className="text-gray-400 leading-relaxed">
-            <span className="font-bold text-white">AstraPent AI</span> is an
-            innovative AI-powered cybersecurity solution designed to detect,
-            analyze, and mitigate vulnerabilities across websites, web
-            applications, and networks. Our cutting-edge AI model automates
-            penetration testing, ensuring robust security for businesses and
-            enterprises.
+            <span className="font-bold text-white">AstraPent AI</span> Transform your ideas into reality with custom web and mobile solutions. At AstraPent, we build innovative, scalable software that drives your success. Ready to stand out? Let’s create something extraordinary!.
           </p>
         </div>
 
